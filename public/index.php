@@ -1,5 +1,20 @@
 <?php
 
+class Template extends ArrayObject {
+    protected $_templateName;
+
+    public function __construct($name, array $input = array()) {
+        $this->_templateName = $name;
+        parent::__construct($input, self::ARRAY_AS_PROPS);
+    }
+
+    public function __toString() {
+         ob_start();
+         include '../views/' . $this->_templateName . '.php';
+         return ob_get_clean();
+    }
+}
+
 function getRequestUrl() {
     return sprintf(
         'http%s://%s%s',
