@@ -24,6 +24,20 @@ function getRequestUrl() {
     );
 }
 
+function pay($name) {
+    $uri = $_SERVER['REQUEST_URI'];
+    $amount = preg_replace('~^/pay/(\d+(?:\.\d\d)?)$~', '$1', $uri);
+    $vars = array('who' => $name, 'monzo'  => '/monzo', 'paypal' => '/paypal');
+
+    if ($amount != $uri) {
+        foreach ($vars as &$var) {
+            $var .= "/$amount";
+        }
+    }
+
+    return array('body' => new Template('pay', $vars));
+}
+
 function qsa($url) {
     return $url . (strpos($url, '?') ? '&' : '?') . $_SERVER['QUERY_STRING'];
 }
@@ -110,11 +124,18 @@ if (isset($paths[$path])) {
     }
 } elseif (preg_match($allPatterns, $path)) {
     foreach ($patterns as $pattern => $replacement) {
-        $newPath = preg_replace("#$pattern#", $replacement, $path, -1, $count);
-
-        if ($count) {
-            header('Location: ' . $newPath);
+        if (is_array($replacement) && preg_match("#$pattern#", $path)) {
+            if (isset($replacement['body'])) {
+                echo $replacement['body'];
+            }
             return;
+        } else {
+            $newPath = preg_replace("#$pattern#", $replacement, $path, -1, $count);
+
+            if ($count) {
+                header('Location: ' . $newPath);
+                return;
+            }
         }
     }
     header('HTTP/1.1 404 Not Found');
