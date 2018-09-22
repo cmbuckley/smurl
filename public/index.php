@@ -5,6 +5,7 @@ class Template extends ArrayObject {
 
     public function __construct($name, array $input = array()) {
         $this->_templateName = $name;
+        $input['imgUrl'] = 'https://i.' . $_SERVER['HTTP_HOST'];
         parent::__construct($input, self::ARRAY_AS_PROPS);
     }
 
