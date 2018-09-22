@@ -119,7 +119,7 @@ if (isset($paths[$path])) {
     }
     header('HTTP/1.1 404 Not Found');
 } else {
-    if ($glob = glob("../img/$path*")) {
+    if ($glob = glob("../img/c/$path*")) {
         $file = $glob[0];
         $finfo = finfo_open(FILEINFO_MIME_TYPE);
         header('Content-Type: ' . finfo_file($finfo, $file));
