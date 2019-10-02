@@ -50,7 +50,7 @@
         }
 
         .monzo {
-            background-image: url('https://monzo.me/static/media/monzo-me-logo.957fd873.svg');
+            background-image: url('https://monzo.me/static/images/monzo-me-logo.svg');
         }
     </style>
 </head>
