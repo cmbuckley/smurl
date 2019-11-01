@@ -3,7 +3,7 @@
 <meta property="og:title" content="<?= $this->title; ?>" />
 <meta property="og:description" content="<?= $this->desc; ?>" />
 <meta property="og:url" content="<?= $this->requestUrl; ?>" />
-<meta property="og:image" content="http://maps.googleapis.com/maps/api/streetview?size=200x200&location=<?= $this->lat . ',' . $this->lng; ?>&heading=<?= $this->heading; ?>&fov=<?= $this->zoom; ?>" />
+<meta property="og:image" content="http://maps.googleapis.com/maps/api/streetview?size=200x200&location=<?= $this->lat . ',' . $this->lng; ?>&heading=<?= $this->heading; ?>&fov=<?= $this->zoom; ?>&key=<?= $this->key; ?>" />
 <meta property="og:type" content="website" />
 <meta http-equiv="refresh" content="0;url=maps:<?= $this->queryString; ?>" />
 <meta name="viewport" content="width=device-width, maximum-scale=1" />
@@ -67,13 +67,13 @@ body {
 <body>
 <div class=message>
 <div class=message-inner>
-<img class=message-img width=34 height=34 src="http://maps.googleapis.com/maps/api/streetview?size=200x200&location=<?= $this->lat . ',' . $this->lng; ?>&heading=<?= $this->heading; ?>&fov=<?= $this->zoom; ?>" />
+<img class=message-img width=34 height=34 src="http://maps.googleapis.com/maps/api/streetview?size=200x200&location=<?= $this->lat . ',' . $this->lng; ?>&heading=<?= $this->heading; ?>&fov=<?= $this->zoom; ?>&key=<?= $this->key; ?>" />
 <div class=message-head>
 <h1><a href="maps:<?= $this->queryString; ?>"><?= $this->title; ?></a></h1>
 <p class=subhead><?= $this->requestUrl; ?></p>
 </div>
 <p><?= $this->desc; ?></p>
-<p><a href="maps:<?= $this->queryString; ?>"><img class=map src="http://maps.googleapis.com/maps/api/staticmap?center=<?= $this->address; ?>&zoom=16&size=280x200&scale=2&maptype=roadmap&sensor=false&markers=<?= $this->address; ?>" /></a></p>
+<p><a href="maps:<?= $this->queryString; ?>"><img class=map src="http://maps.googleapis.com/maps/api/staticmap?center=<?= $this->address; ?>&zoom=16&size=280x200&scale=2&maptype=roadmap&sensor=false&markers=<?= $this->address; ?>&key=<?= $this->key; ?>" /></a></p>
 </div>
 <div class=message-footer><a href="maps:<?= $this->queryString; ?>">Open in iOS Maps</a><a href="comgooglemaps://?<?= $this->queryStringSimple; ?>">Open in Google Maps</a></div>
 </div>

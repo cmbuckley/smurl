@@ -44,6 +44,7 @@ function qsa($url) {
 }
 
 function map($address, $title, array $img) {
+    global $env;
     $userAgent = $_SERVER['HTTP_USER_AGENT'];
     $url = $body = null;
     $query = array('q' => "$address ($title)");
@@ -62,6 +63,7 @@ function map($address, $title, array $img) {
         case isset($_GET['testmap']):
         case strpos($userAgent, 'iPhone') && strpos($userAgent, 'FBAN/FBIOS'):
         case false !== strpos($userAgent, 'facebookexternalhit'):
+        case false !== strpos($userAgent, 'Slackbot-LinkExpanding'):
             $body = new Template('map', array(
                 'title'             => $title,
                 'desc'              => 'A map of ' . preg_replace('/\s*\(.+?\)$/', '', $query['q']) . '.',
@@ -73,6 +75,7 @@ function map($address, $title, array $img) {
                 'queryString'       => $queryString,
                 'queryStringSimple' => $queryStringSimple,
                 'address'           => $address,
+                'key'               => $env['google-api-key'],
             ));
 
             // @todo sort out maps links for Android
@@ -95,6 +98,7 @@ function map($address, $title, array $img) {
     );
 }
 
+$env = require_once '../env.php';
 $paths = array(
 );
 
