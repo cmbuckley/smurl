@@ -30,10 +30,13 @@ function pay($name) {
     $amount = preg_replace('~^/pay/(\d+(?:\.\d\d)?)$~', '$1', $uri);
     $vars = array('who' => $name, 'monzo'  => '/monzo', 'paypal' => '/paypal');
 
-    if ($amount != $uri) {
+    if ($amount != $uri && is_numeric($amount) && $amount > 0 && $amount < 10000) {
         foreach ($vars as &$var) {
             $var .= "/$amount";
         }
+
+        $fmt = new NumberFormatter('en_GB', NumberFormatter::CURRENCY);
+        $vars['amount'] = str_replace('.00', '', $fmt->formatCurrency((float) $amount, 'GBP'));
     }
 
     return array('body' => new Template('pay', $vars));

@@ -2,7 +2,8 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
-    <title>Pay <?= $this->who ?></title>
+    <title>Pay <?= $this->who . ($this->amount ? " $this->amount" : ''); ?></title>
+    <meta name="description" content="Pay <?= $this->who; ?> instantly via Monzo or PayPal. You don’t need an account with either.">
     <meta property="og:image" content="<?= $this->imgUrl; ?>/pay.png" />
     <style>
         body {
@@ -10,6 +11,11 @@
             font-family: Helvetica, Arial, sans;
             background-color: #ededed;
             color: #4d5c93;
+        }
+
+        p {
+            font-size: 3em;
+            font-weight: bold;
         }
 
         ul {
@@ -56,6 +62,10 @@
 </head>
 <body>
 <h1>How do you want to pay <?= $this->who; ?>?</h1>
+
+<?php if ($this->amount) { ?>
+  <p><?= $this->amount; ?></p>
+<?php } ?>
 
 <ul>
     <li class="monzo"><a href="<?= $this->monzo; ?>">Monzo</a></li>
