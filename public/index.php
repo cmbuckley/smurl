@@ -151,8 +151,16 @@ if (isset($paths[$path])) {
     if ($glob = glob("../img/c/$path*")) {
         $file = $glob[0];
         $finfo = finfo_open(FILEINFO_MIME_TYPE);
-        header('Content-Type: ' . finfo_file($finfo, $file));
+        $type = finfo_file($finfo, $file);
         finfo_close($finfo);
+        $ua = $_SERVER['HTTP_USER_AGENT'];
+
+        if (false !== strpos($type, 'video/') && strpos($ua, 'Safari/') && !strpos($ua, 'Chrome/')) {
+            header('Location: https://i.' . $_SERVER['HTTP_HOST'] . '/c/' . basename($file));
+            return;
+        }
+
+        header('Content-Type: ' . $type);
         readfile($file);
     }
     header('HTTP/1.1 404 Not Found');
