@@ -42,6 +42,12 @@ function pay($name) {
     return array('body' => new Template('pay', $vars));
 }
 
+function gravatar() {
+    $uri = $_SERVER['REQUEST_URI'];
+    $email = preg_replace('~^/grav/(.+)$~', '$1', $uri);
+    return 'https://www.gravatar.com/avatar/' . md5(strtolower(trim($email))) . '?d=mm';
+}
+
 function qsa($url) {
     return $url . (strpos($url, '?') ? '&' : '?') . $_SERVER['QUERY_STRING'];
 }
