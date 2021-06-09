@@ -56,7 +56,7 @@
         }
 
         .monzo {
-            background-image: url('https://monzo.me/static/images/monzo-me-logo.svg');
+            background-image: url('<?= $this->imgUrl; ?>/monzo.svg');
         }
     </style>
 </head>

@@ -28,7 +28,7 @@ function getRequestUrl() {
 function pay($name) {
     $uri = $_SERVER['REQUEST_URI'];
     $amount = preg_replace('~^/pay/(\d+(?:\.\d\d)?)$~', '$1', $uri);
-    $vars = array('who' => $name, 'monzo'  => '/monzo', 'paypal' => '/paypal');
+    $vars = array('monzo'  => '/monzo', 'paypal' => '/paypal');
 
     if ($amount != $uri && is_numeric($amount) && $amount > 0 && $amount < 10000) {
         foreach ($vars as &$var) {
@@ -39,6 +39,7 @@ function pay($name) {
         $vars['amount'] = str_replace('.00', '', $fmt->formatCurrency((float) $amount, 'GBP'));
     }
 
+    $vars['who'] = $name;
     return array('body' => new Template('pay', $vars));
 }
 
