@@ -35,8 +35,10 @@ function pay($name) {
             $var .= "/$amount";
         }
 
-        $fmt = new NumberFormatter('en_GB', NumberFormatter::CURRENCY);
-        $vars['amount'] = str_replace('.00', '', $fmt->formatCurrency((float) $amount, 'GBP'));
+        if (class_exists('NumberFormatter')) {
+            $fmt = new NumberFormatter('en_GB', NumberFormatter::CURRENCY);
+            $vars['amount'] = str_replace('.00', '', $fmt->formatCurrency((float) $amount, 'GBP'));
+        }
     }
 
     $vars['who'] = $name;
