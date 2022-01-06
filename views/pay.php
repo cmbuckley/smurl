@@ -5,6 +5,7 @@
     <title>Pay <?= $this->who . ($this->amount ? " $this->amount" : ''); ?></title>
     <meta name="description" content="Pay <?= $this->who; ?> instantly via Monzo or PayPal. You don’t need an account with either.">
     <meta property="og:image" content="<?= $this->imgUrl; ?>/pay.png" />
+    <link rel="shortcut icon" href="<?= $this->imgUrl; ?>/favicon.ico">
     <style>
         body {
             text-align: center;

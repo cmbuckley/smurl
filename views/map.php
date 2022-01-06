@@ -7,6 +7,7 @@
 <meta property="og:type" content="website" />
 <meta http-equiv="refresh" content="0;url=maps:<?= $this->queryString; ?>" />
 <meta name="viewport" content="width=device-width, maximum-scale=1" />
+<link rel="shortcut icon" href="<?= $this->imgUrl; ?>/favicon.ico">
 <style>
 body {
     font-family: helvetica, sans-serif;
