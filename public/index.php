@@ -16,6 +16,12 @@ class Template extends ArrayObject {
     }
 }
 
+function env($key, $default = null) {
+    static $env;
+    if (!$env) { $env = require_once '../env.php'; }
+    return (isset($env[$key]) ? $env[$key] : $default);
+}
+
 function getRequestUrl() {
     return sprintf(
         'http%s://%s%s',
@@ -56,7 +62,6 @@ function qsa($url) {
 }
 
 function map($address, $title, array $img) {
-    global $env;
     $userAgent = $_SERVER['HTTP_USER_AGENT'];
     $url = $body = null;
     $query = array('q' => "$address ($title)");
@@ -87,7 +92,7 @@ function map($address, $title, array $img) {
                 'queryString'       => $queryString,
                 'queryStringSimple' => $queryStringSimple,
                 'address'           => $address,
-                'key'               => $env['google-api-key'],
+                'key'               => env('google-api-key'),
             ));
 
             // @todo sort out maps links for Android
@@ -110,7 +115,6 @@ function map($address, $title, array $img) {
     );
 }
 
-$env = require_once '../env.php';
 $paths = array(
 );
 
