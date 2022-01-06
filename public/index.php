@@ -84,7 +84,7 @@ function map($address, $title, array $img) {
             $body = new Template('map', array(
                 'title'             => $title,
                 'desc'              => 'A map of ' . preg_replace('/\s*\(.+?\)$/', '', $query['q']) . '.',
-                'requestUrl'        => $requestUrl,
+                'requestUrl'        => preg_replace('/[?&]fbclid=[^&]*/', '', $requestUrl),
                 'lat'               => $img[0],
                 'lng'               => $img[1],
                 'heading'           => $img[2],

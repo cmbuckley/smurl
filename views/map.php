@@ -9,59 +9,71 @@
 <meta name="viewport" content="width=device-width, maximum-scale=1" />
 <link rel="shortcut icon" href="<?= $this->imgUrl; ?>/favicon.ico">
 <style>
+@media only screen and (min-width: 460px) {
+    .message { border-radius: 8px; }
+}
 body {
-    font-family: helvetica, sans-serif;
-    font-size: 14px;
-    background-color: #c4cde0;
+    font-family: -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    font-size: 15px;
+    color: #050505;
+    background-color: #f0f2f5;
     margin: 0;
 }
 .message {
     background-color: white;
-    margin: 10px;
-    border: 1px solid #b4bccd;
-    border-radius: 3px;
-    box-shadow: 0 1px 3px -2px rgba(0, 0, 0, 0.5);
+    margin: 8px auto 0;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    max-width: 450px;
 }
 .message-inner {
     padding: 8px;
+    padding-bottom: 0;
+}
+.message-inner > *:last-child {
+    padding-bottom: 15px;
+    margin-bottom: 0;
+    border-bottom: 1px solid #ced0d4;
 }
 .message-img {
     float: left;
     margin-right: 10px;
 }
-.message a, .message-footer {
-    color: #576B95;
-    font-weight: bold;
+.message a {
+    color: #050505;
     text-decoration: none;
+}
+.message a:hover {
+    text-decoration: underline;
 }
 .message-head {
     overflow: hidden;
 }
 .message h1 {
     margin: 0;
-    font-size: 13px;
+    font-size: 15px;
+    font-weight: 500;
 }
 .subhead {
     margin: 2px 0;
-    color: #bbb;
+    color: #65676b;
     font-size: 12.5px;
 }
 .map {
     border: 1px solid #ccc;
-    width: 280px;
-    height: 200px;
+    width: 100%;
 }
 .message-footer {
-    background-color: #eff2f5;
-    border-top: 1px solid #DADDE1;
     padding: 7px 8px;
-    font-size: 12px;
+    font-size: 13px;
+    display: flex;
 }
 .message-footer a {
-    margin: 0 5px;
+    color: #65676b;
 }
-.message-footer a:first-child {
-    margin-left: 0;
+.footer-link {
+    padding: 5px;
+    flex: 1;
+    text-align: center;
 }
 </style>
 </head>
@@ -76,7 +88,10 @@ body {
 <p><?= $this->desc; ?></p>
 <p><a href="maps:<?= $this->queryString; ?>"><img class=map src="http://maps.googleapis.com/maps/api/staticmap?center=<?= $this->address; ?>&zoom=16&size=280x200&scale=2&maptype=roadmap&sensor=false&markers=<?= $this->address; ?>&key=<?= $this->key; ?>" /></a></p>
 </div>
-<div class=message-footer><a href="maps:<?= $this->queryString; ?>">Open in iOS Maps</a><a href="comgooglemaps://?<?= $this->queryStringSimple; ?>">Open in Google Maps</a></div>
+<div class=message-footer>
+<div class=footer-link><a href="maps:<?= $this->queryString; ?>">Open in iOS Maps</a></div>
+<div class=footer-link><a href="comgooglemaps://?<?= $this->queryStringSimple; ?>">Open in Google Maps</a></div>
+</div>
 </div>
 </body>
 </html>
