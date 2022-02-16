@@ -86,7 +86,7 @@ body {
 <p class=subhead><?= $this->requestUrl; ?></p>
 </div>
 <p><?= $this->desc; ?></p>
-<p><a href="maps:<?= $this->queryString; ?>"><img class=map src="http://maps.googleapis.com/maps/api/staticmap?center=<?= $this->address; ?>&zoom=16&size=280x200&scale=2&maptype=roadmap&sensor=false&markers=<?= $this->address; ?>&key=<?= $this->key; ?>" /></a></p>
+<p><a href="maps:<?= $this->queryString; ?>"><img class=map src="http://maps.googleapis.com/maps/api/staticmap?center=<?= $this->address; ?>&zoom=17&size=420x300&scale=2&maptype=roadmap&sensor=false&markers=<?= $this->address; ?>&key=<?= $this->key; ?>" /></a></p>
 </div>
 <div class=message-footer>
 <div class=footer-link><a href="maps:<?= $this->queryString; ?>">Open in iOS Maps</a></div>
