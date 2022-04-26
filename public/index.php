@@ -18,7 +18,7 @@ class Template extends ArrayObject {
 
 function env($key, $default = null) {
     static $env;
-    if (!$env) { $env = require_once '../env.php'; }
+    if (!$env) { $env = require_once '../config/env.php'; }
     return (isset($env[$key]) ? $env[$key] : $default);
 }
 
@@ -115,43 +115,70 @@ function map($address, $title, array $img) {
     );
 }
 
-$paths = array(
-);
+function runPlugin(array $config) {
+    $params = (isset($config['params']) ? $config['params'] : []);
+    if (!is_array($params)) { $params = [$params]; }
 
-$patterns = array(
-);
+    try {
+        return call_user_func_array($config['plugin'], $params);
+    } catch (TypeError $e) {
+        error_log("Invalid smurl plugin [${config['plugin']}]");
+        http_response_code(501);
+    }
+}
 
-$allPatterns = '#' . implode('|', array_keys($patterns)) . '#';
+$linksFile = '../config/links.yml';
+$links = yaml_parse(file_get_contents($linksFile));
+
+$allPatterns = '#' . implode('|', array_column($links['patterns'], 'pattern')) . '#';
 
 $host = $_SERVER['HTTP_HOST'];
 $path = ltrim($_SERVER['PATH_INFO'], '/');
 
-if (isset($paths[$path])) {
-    if (is_array($paths[$path])) {
-        if (isset($paths[$path]['body'])) {
-            if (isset($paths[$path]['type'])) {
-                header('Content-Type: ' . $paths[$path]['type']);
+if (isset($links['static'][$path])) {
+    $location = $links['static'][$path];
+
+    if (isset($location['plugin'])) {
+        $location = runPlugin($location);
+    }
+
+    if (is_array($location)) {
+        if (isset($location['body'])) {
+            if (isset($location['type'])) {
+                header('Content-Type: ' . $location['type']);
             }
-            echo $paths[$path]['body'];
-        } elseif (isset($paths[$path]['url'])) {
-            header('Location: ' . $paths[$path]['url']);
+
+            echo $location['body'];
+        } elseif (isset($location['url'])) {
+            header('Location: ' . $location['url']);
         }
     } else {
-        $location = $paths[$path];
         if ($location[0] == '/') {
             $location = 'http' . ($_SERVER['HTTPS'] == 'on' ? 's' : '') . ':' . $location;
         }
         header('Location: ' . $location);
     }
 } elseif (preg_match($allPatterns, $path)) {
-    foreach ($patterns as $pattern => $replacement) {
-        if (is_array($replacement) && preg_match("#$pattern#", $path)) {
-            if (isset($replacement['body'])) {
-                echo $replacement['body'];
+    foreach ($links['patterns'] as $link) {
+        $pattern = $link['pattern'];
+        $target = $link['target'];
+
+        if (is_array($target) && preg_match("#$pattern#", $path)) {
+            if (isset($target['plugin'])) {
+                $target = runPlugin($target);
             }
+
+            if (isset($target['body'])) {
+                echo $target['body'];
+            }
+
+            if (is_string($target)) {
+                header('Location: ' . $target);
+            }
+
             return;
-        } else {
-            $newPath = preg_replace("#$pattern#", $replacement, $path, -1, $count);
+        } elseif (is_string($target)) {
+            $newPath = preg_replace("#$pattern#", $target, $path, -1, $count);
 
             if ($count) {
                 header('Location: ' . $newPath);
@@ -159,7 +186,8 @@ if (isset($paths[$path])) {
             }
         }
     }
-    header('HTTP/1.1 404 Not Found');
+
+    http_response_code(404);
 } else {
     if ($glob = glob("../img/c/$path*")) {
         $file = $glob[0];
@@ -176,5 +204,6 @@ if (isset($paths[$path])) {
         header('Content-Type: ' . $type);
         readfile($file);
     }
-    header('HTTP/1.1 404 Not Found');
+
+    http_response_code(404);
 }
