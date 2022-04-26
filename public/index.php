@@ -203,7 +203,7 @@ if (isset($links['static'][$path])) {
 
         header('Content-Type: ' . $type);
         readfile($file);
+    } else {
+        http_response_code(404);
     }
-
-    http_response_code(404);
 }
