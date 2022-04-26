@@ -1,17 +1,17 @@
 <?php
 
 class Template extends ArrayObject {
-    protected $_templateName;
+    protected $templateName;
 
     public function __construct($name, array $input = array()) {
-        $this->_templateName = $name;
+        $this->templateName = $name;
         $input['imgUrl'] = 'https://i.' . $_SERVER['HTTP_HOST'];
         parent::__construct($input, self::ARRAY_AS_PROPS);
     }
 
     public function __toString() {
          ob_start();
-         include '../views/' . $this->_templateName . '.php';
+         include '../views/' . $this->templateName . '.php';
          return ob_get_clean();
     }
 }
