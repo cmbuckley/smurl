@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
-    <title>Pay <?= $this->who . ($this->amount ? " $this->amount" : ''); ?></title>
+    <title>Pay <?= $this->who . (isset($this->amount) && $this->amount ? " $this->amount" : ''); ?></title>
     <meta name="description" content="Pay <?= $this->who; ?> instantly via Monzo or PayPal. You don’t need an account with either.">
     <meta property="og:image" content="<?= $this->imgUrl; ?>/pay.png" />
     <link rel="shortcut icon" href="<?= $this->imgUrl; ?>/favicon.ico">
@@ -64,7 +64,7 @@
 <body>
 <h1>How do you want to pay <?= $this->who; ?>?</h1>
 
-<?php if ($this->amount) { ?>
+<?php if (isset($this->amount) && $this->amount) { ?>
   <p><?= $this->amount; ?></p>
 <?php } ?>
 
