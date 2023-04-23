@@ -4,9 +4,9 @@ import plugins from './plugins';
 const allPatterns = new RegExp(config.patterns.map(p => p.pattern).join('|'));
 config.patterns.forEach((p, i) => config.patterns[i].regexp = new RegExp(p.pattern));
 
-function getResponse(options, requestUrl) {
+async function getResponse(options, request) {
     if (options.plugin) {
-        options = plugins.run(dest);
+        options = await plugins.run(options, request);
     }
 
     if (options.url) {
@@ -24,7 +24,7 @@ function getResponse(options, requestUrl) {
     }
 
     if (options[0] == '/') {
-        options = requestUrl.protocol + options;
+        options = new URL(request.url).protocol + options;
     }
 
     return Response.redirect(options);
@@ -32,12 +32,11 @@ function getResponse(options, requestUrl) {
 
 export default {
     async fetch(request, env, ctx) {
-        const url = new URL(request.url);
-        const path = url.pathname.replace(/^\//, '');
+        const path = new URL(request.url).pathname.replace(/^\//, '');
 
         if (config.static[path]) {
             let dest = config.static[path];
-            return getResponse(dest, url);
+            return await getResponse(dest, request);
         }
         else if (allPatterns.test(path)) {
             const pattern = config.patterns.find(p => p.regexp.test(path));
@@ -47,9 +46,9 @@ export default {
                 target = path.replace(pattern.regexp, target);
             }
 
-            return getResponse(target, url);
+            return await getResponse(target, request);
         }
 
-        return new Response(404);
+        return new Response(404, {status: 404});
     }
 };
