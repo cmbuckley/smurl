@@ -12,6 +12,16 @@ const plugins = {
         return `https://www.gravatar.com/avatar/${md5Email}?d=mm`;
     },
 
+    pay: async function (name) {
+        const url = new URL(this.url);
+        const amount = url.pathname.replace(/^\/pay\/(\d+(?:\.\d\d)?)$/, '$1');
+        const params = {monzo: '/monzo', paypal: '/paypal'};
+
+        if (amount != url.pathname) {
+            Object.keys(params).forEach(p => params[p] += `/${amount}`);
+        }
+    },
+
     qsa: async function (url) {
         const reqUrl = new URL(this.url);
         if (reqUrl.search) {
