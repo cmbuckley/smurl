@@ -1,0 +1,4 @@
+name = "smurl"
+main = "src/index.js"
+compatibility_date = "2023-04-23"
+node_compat = true

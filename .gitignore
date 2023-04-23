@@ -1,2 +1,4 @@
 .*/
 config/env.php
+package-lock.json
+node_modules

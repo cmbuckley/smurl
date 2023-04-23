@@ -1,0 +1,14 @@
+{
+  "name": "smurl",
+  "version": "1.0.0",
+  "description": "Smart URL Shortener",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cmbuckley/smurl.git"
+  },
+  "author": "Chris Buckley <chris@cmbuckley.co.uk>",
+  "license": "MIT",
+  "devDependencies": {
+    "wrangler": "^2.16.0"
+  }
+}

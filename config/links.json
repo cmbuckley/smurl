@@ -1,0 +1,154 @@
+{
+  "static": {
+    "": "https://cmbuckley.co.uk",
+    "+": "https://plus.google.com/+ChrisBuckleyLeeds",
+    "~": "https://github.com/cmbuckley/dotfiles",
+    "\\xe2\\x80\\x8bamzn": "http://www.amazon.co.uk/registry/wishlist/3W5ATDFGRIL8D?sort=priority",
+    "adblock": "https://raw.githubusercontent.com/cmbuckley/adblock/master/adblock.txt",
+    "aletrail": "https://maps.google.com/maps/ms?msid=213969367807062166831.0004e52f2512b00901f0f&msa=0",
+    "amen": "http://www.amazon.co.uk/registry/wishlist/3W5ATDFGRIL8D?sort=priority",
+    "amzn": "http://www.amazon.co.uk/registry/wishlist/3W5ATDFGRIL8D?sort=priority",
+    "avatar": "https://gravatar.com/avatar/27046ee7321f6c8a4c31c5a8ee066460?s=600",
+    "awaria": "chrome://inducebrowsercrashforrealz",
+    "b2Wngiml": "https://cmbuckley.co.uk/blog/2013/02/26/why-nick-grimshaw-is-my-latest-excuse-for-being-lazy/",
+    "bswcr": "https://cmbuckley.co.uk/blog/2007/08/05/square-wheels-and-catenary-roads/",
+    "buuit": "https://cmbuckley.co.uk/blog/2014/02/16/ultraviolet-universal-is-terrible/",
+    "cal": "http://calendar.cmbuckley.co.uk",
+    "cas": "https://scripts.cmbuckley.co.uk/sky/cas.html",
+    "checker": "https://upload.wikimedia.org/wikipedia/commons/5/5d/Checker-16x16.png",
+    "cp": "https://vps.cheapvps.co.uk:5656",
+    "cv": "https://cmbuckley.co.uk/cv",
+    "cv.pdf": "https://cmbuckley.co.uk/cv/cv.pdf",
+    "do": "https://www.digitalocean.com/?refcode=9a88cf3fdd19",
+    "driving": "http://test.cmbuckley.co.uk/driving",
+    "ePrhhw": "http://www.iflscience.com/technology/penguin-rover-has-happy-wheels",
+    "fb": "https://www.facebook.com/cmbuckley",
+    "flybe": "https://scripts.cmbuckley.co.uk/flybe/",
+    "gim": "https://git.kernel.org/pub/scm/git/git.git/tree/Documentation/SubmittingPatches?id=HEAD#n139",
+    "goose": "http://www.dailymail.co.uk/news/article-444733/Terror-70mph-goose-smashes-car-windscreen.html",
+    "h": "https://github.com/cmbuckley/home",
+    "headset": "https://cmbuckley.co.uk/projects/headset/",
+    "isles": "https://en.wikipedia.org/wiki/Terminology_of_the_British_Isles",
+    "jq": "https://stedolan.github.io/jq",
+    "jsf": "http://jsfiddle.net/user/cbuckley/",
+    "kez": "https://www.gofundme.com/f/runningformywife",
+    "laws": "https://gist.github.com/cmbuckley/edd966d5a02900ae64d5f023719aaf85",
+    "letterboxd-ics": "https://cmbuckley.co.uk/letterboxd-ics/",
+    "lock": "http://cdn.meme.am/instances/52259765.jpg",
+    "mail": "http://mail.cmbuckley.co.uk",
+    "map": {
+      "plugin": "map",
+      "params": [
+        "6 Brunel Court, YO26 4UU",
+        "Bux’s House",
+        [
+          53.963286,
+          -1.104168,
+          35,
+          4
+        ]
+      ]
+    },
+    "map/meanwood": {
+      "plugin": "map",
+      "params": [
+        "3 Sandfield Garth, LS6 4JL",
+        "Meanwood",
+        [
+          53.8273013,
+          -1.5725007,
+          190,
+          50
+        ]
+      ]
+    },
+    "map/gv": {
+      "plugin": "map",
+      "params": [
+        "19a Green View, Meanwood, LS6 4JY",
+        "Green View",
+        [
+          53.829753,
+          -1.5695829,
+          175,
+          45
+        ]
+      ]
+    },
+    "me": "https://cmbuckley.co.uk",
+    "nz": "https://www.facebook.com/media/set/?set=a.10100293779056823.2539736.61201039&type=1&l=251a132c36",
+    "nz/ppl": "https://www.facebook.com/media/set/?set=a.10100293796646573.2539740.61201039&type=1&l=8aa7bd9459",
+    "olly.stag": "https://docs.google.com/document/d/1IWwVCLlXcYHRH-8cJoI3LeZ81TwaqzUqc3-ttFOJn_I/pub",
+    "oncall": "https://scripts.cmbuckley.co.uk/sky/gaming-on-call.php",
+    "pgp": "https://keybase.io/cmbuckley/key.asc",
+    "rc": "https://commons.wikimedia.org/wiki/File:Rubik%27s_cube_scrambled.svg",
+    "rqjs": "//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.js",
+    "rubik": "https://cmbuckley.co.uk/blog/2015/05/27/my-rubiks-cube-solution/",
+    "sbg-dond": {
+      "plugin": "qsa",
+      "params": "https://www.skyvegas.com/game/dond-whats-in-your-box-html"
+    },
+    "sbrootca": "https://gaming-cdn.s3-eu-west-1.amazonaws.com/ssl/SBROOTCA.crt",
+    "SBROOTCA": "https://gaming-cdn.s3-eu-west-1.amazonaws.com/ssl/SBROOTCA.crt",
+    "sfs": "https://scripts.cmbuckley.co.uk/sky/feature.html",
+    "sp": "https://www.staging.skypoker.com",
+    "tax": "https://docs.google.com/spreadsheets/d/1oLUNdAeynca9ZS9TMaHKTzZpTolSFJoR_LPbKT3Bpew/edit",
+    "thread": "https://www.thread.com/Uu1667361865",
+    "tp": "https://www.test2.skypoker.com",
+    "travscope": "https://docs.travis-ci.com/user/github-oauth-scopes/",
+    "val2014": "https://www.facebook.com/media/set/?set=a.10100727822265753.1073741830.61201039&type=1&l=a634dd8b4f",
+    "w": "https://emilia-chris.wedding",
+    "w/idea": "https://docs.google.com/document/d/1BPpAXjgjPGm2kkYhTDqbiCjQcuX1rgXAripQ9V2lzCo",
+    "w/map": "https://www.google.com/maps/d/viewer?mid=1f9jLBDTnlcRvwbUTOkEgoloFwknCQqYq&usp=sharing",
+    "w/m1": "https://open.spotify.com/playlist/5RCQCYHx9iUBVsPvjiCmhy",
+    "w/m2": "https://open.spotify.com/playlist/5nqTmDYmigC1StY3wFAOmx",
+    "w/m3": "https://open.spotify.com/playlist/6OaYmi8JHmna2s53tN4CVT",
+    "w/m4": "https://open.spotify.com/playlist/0opSHN9O4dR30inngug4RW",
+    "w/m5": "https://open.spotify.com/playlist/3Tm4l7VNWbPFr6wOlqGnGm",
+    "w/m6": "https://open.spotify.com/playlist/6AN51eikv8hsndaiyGGYnB",
+    "w/plan": "https://docs.google.com/spreadsheets/d/1urtGeB4GNiDRTWEXUDpjzZYjKZ6HRHuG_-PjUPSU1rM",
+    "w/t": "https://emilia-chris.wedding/schedule/travel",
+    "w/vend": "https://docs.google.com/document/d/1exi5LVhXj-f_yyc9EdO4eYwhsl8J_NJkM4BapvHwFmU",
+    "w/y": "https://youtu.be/k0GRcBCAKxc",
+    "w/z": "https://zoom.us/j/98198772268",
+    "wcdemo": "http://html5-demos.appspot.com/static/webcomponents/index.html",
+    "wd": "https://wd3.myworkday.com/sbgpeople/d/home.htmld",
+    "workout": "http://www.intervaltimer.com/timers/9771864-joe-wicks-workout/fullscreen",
+    "z": "https://zoom.us/j/2892891212?pwd=Qjk5LzhobUhFOENHd0hVbDJWbUJJdz09"
+  },
+  "patterns": [
+    {
+      "pattern": "exkcd/(\\d+)",
+      "target": "http://www.explainxkcd.com/wiki/index.php?title=$1"
+    },
+    {
+      "pattern": "javadocs/(.+)",
+      "target": "http://docs.oracle.com/javase/6/docs/api/$1"
+    },
+    {
+      "pattern": "gh(/.*)?",
+      "target": "https://github.com/cmbuckley$1"
+    },
+    {
+      "pattern": "~/\\.?([^/]+)",
+      "target": "https://github.com/cmbuckley/dotfiles/blob/master/files/$1"
+    },
+    {
+      "pattern": "(paypal|monzo)(/.*)?",
+      "target": "https://$1.me/cmbuckley$2"
+    },
+    {
+      "pattern": "pay(/.*)?",
+      "target": {
+        "plugin": "pay",
+        "params": "Chris"
+      }
+    },
+    {
+      "pattern": "grav(/.*)",
+      "target": {
+        "plugin": "gravatar"
+      }
+    }
+  ]
+}
