@@ -122,7 +122,7 @@ function runPlugin(array $config) {
     try {
         return call_user_func_array($config['plugin'], $params);
     } catch (TypeError $e) {
-        error_log("Invalid smurl plugin [${config['plugin']}]");
+        error_log("Invalid smurl plugin [{$config['plugin']}]");
         http_response_code(501);
     }
 }
