@@ -5,7 +5,7 @@ class Template extends ArrayObject {
 
     public function __construct($name, array $input = array()) {
         $this->templateName = $name;
-        $input['imgUrl'] = 'https://i.' . $_SERVER['HTTP_HOST'];
+        $input['imgUrl'] = 'https://' . $_ENV['IMG_HOST'];
         parent::__construct($input, self::ARRAY_AS_PROPS);
     }
 
@@ -201,7 +201,7 @@ if (isset($links['static'][$path])) {
         $ua = $_SERVER['HTTP_USER_AGENT'];
 
         if (false !== strpos($type, 'video/') && strpos($ua, 'Safari/') && !strpos($ua, 'Chrome/')) {
-            header('Location: https://i.' . $_SERVER['HTTP_HOST'] . '/c/' . basename($file));
+            header('Location: https://i.' . $_ENV['IMG_HOST'] . '/c/' . basename($file));
             return;
         }
 

@@ -5,4 +5,8 @@ RUN a2enmod rewrite
 COPY --from=mlocati/php-extension-installer /usr/bin/install-php-extensions /usr/local/bin/
 RUN install-php-extensions yaml
 
+# hostname for images
+ARG IMG_HOST
+ENV IMG_HOST $IMG_HOST
+
 COPY . /var/www
