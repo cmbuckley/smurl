@@ -20,12 +20,6 @@ class Template extends ArrayObject {
     }
 }
 
-function env($key, $default = null) {
-    static $env;
-    if (!$env) { $env = require_once '../config/env.php'; }
-    return (isset($env[$key]) ? $env[$key] : $default);
-}
-
 function getRequestUrl() {
     return sprintf(
         'http%s://%s%s',
@@ -96,7 +90,7 @@ function map($address, $title, array $img) {
                 'queryString'       => $queryString,
                 'queryStringSimple' => $queryStringSimple,
                 'address'           => $address,
-                'key'               => env('google-api-key'),
+                'key'               => $_ENV['GOOGLE_API_KEY'],
             ));
 
             // @todo sort out maps links for Android
