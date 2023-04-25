@@ -9,6 +9,10 @@ class Template extends ArrayObject {
         parent::__construct($input, self::ARRAY_AS_PROPS);
     }
 
+    public function offsetGet(mixed $key): mixed {
+        return $this->offsetExists($key) ? parent::offsetGet($key) : null;
+    }
+
     public function __toString() {
          ob_start();
          include '../views/' . $this->templateName . '.php';
