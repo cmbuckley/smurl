@@ -138,7 +138,8 @@ $links = yaml_parse(file_get_contents($linksFile));
 $allPatterns = '#^(' . implode('|', array_column($links['patterns'], 'pattern')) . ')$#';
 
 $host = $_SERVER['HTTP_HOST'];
-$path = ltrim($_SERVER['PATH_INFO'], '/');
+$parts = parse_url($_SERVER['REQUEST_URI']);
+$path = ltrim($parts['path'], '/');
 
 if (isset($links['static'][$path])) {
     $location = $links['static'][$path];
