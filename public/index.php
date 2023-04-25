@@ -134,7 +134,7 @@ function runPlugin(array $config) {
 $linksFile = '../config/links.yml';
 $links = yaml_parse(file_get_contents($linksFile));
 
-$allPatterns = '#' . implode('|', array_column($links['patterns'], 'pattern')) . '#';
+$allPatterns = '#^(' . implode('|', array_column($links['patterns'], 'pattern')) . ')$#';
 
 $host = $_SERVER['HTTP_HOST'];
 $path = ltrim($_SERVER['PATH_INFO'], '/');
@@ -167,7 +167,7 @@ if (isset($links['static'][$path])) {
         $pattern = $link['pattern'];
         $target = $link['target'];
 
-        if (is_array($target) && preg_match("#$pattern#", $path)) {
+        if (is_array($target) && preg_match("#^{$pattern}$#", $path)) {
             if (isset($target['plugin'])) {
                 $target = runPlugin($target);
             }
