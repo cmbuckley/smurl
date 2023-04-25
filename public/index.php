@@ -29,6 +29,13 @@ function getRequestUrl() {
     );
 }
 
+function error($code) {
+    http_response_code($code);
+    if (file_exists($file = "../views/$code.php")) {
+        include_once $file;
+    }
+}
+
 function pay($name) {
     $uri = $_SERVER['REQUEST_URI'];
     $amount = preg_replace('~^/pay/(\d+(?:\.\d\d)?)$~', '$1', $uri);
@@ -121,7 +128,7 @@ function runPlugin(array $config) {
         return call_user_func_array($config['plugin'], $params);
     } catch (TypeError $e) {
         error_log("Invalid smurl plugin [{$config['plugin']}]");
-        http_response_code(501);
+        error(501);
     }
 }
 
@@ -185,7 +192,7 @@ if (isset($links['static'][$path])) {
         }
     }
 
-    http_response_code(404);
+    error(404);
 } else {
     if ($glob = glob("../img/c/$path*")) {
         $file = $glob[0];
@@ -202,6 +209,6 @@ if (isset($links['static'][$path])) {
         header('Content-Type: ' . $type);
         readfile($file);
     } else {
-        http_response_code(404);
+        error(404);
     }
 }
