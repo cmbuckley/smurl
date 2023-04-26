@@ -9,4 +9,4 @@ RUN install-php-extensions yaml
 ARG IMG_HOST
 ENV IMG_HOST $IMG_HOST
 
-COPY . /var/www
+COPY src /var/www
