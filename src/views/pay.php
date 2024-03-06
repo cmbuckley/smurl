@@ -35,11 +35,13 @@
             background-color: #deedff;
             background-repeat: no-repeat;
             background-position: center center;
+            background-size: auto 50%;
             box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.2);
         }
 
         li:hover {
             background-color: #f4f9ff;
+            background-size: auto 52%;
             box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.3);
         }
 
@@ -59,6 +61,10 @@
         .monzo {
             background-image: url('<?= $this->imgUrl; ?>/monzo.svg');
         }
+
+        .revolut {
+            background-image: url('<?= $this->imgUrl; ?>/revolut.svg');
+        }
     </style>
 </head>
 <body>
@@ -71,6 +77,7 @@
 <ul>
     <li class="monzo"><a href="<?= $this->monzo; ?>">Monzo</a></li>
     <li class="paypal"><a href="<?= $this->paypal; ?>">PayPal</a></li>
+    <li class="revolut"><a href="<?= $this->revolut; ?>">Revolut</a></li>
 </ul>
 </body>
 </html>

@@ -39,7 +39,7 @@ function error($code) {
 function pay($name) {
     $uri = $_SERVER['REQUEST_URI'];
     $amount = preg_replace('~^/pay/(\d+(?:\.\d\d)?)$~', '$1', $uri);
-    $vars = array('monzo'  => '/monzo', 'paypal' => '/paypal');
+    $vars = array('monzo'  => '/monzo', 'paypal' => '/paypal', 'revolut' => '/revolut');
 
     if ($amount != $uri && is_numeric($amount) && $amount > 0 && $amount < 10000) {
         foreach ($vars as &$var) {

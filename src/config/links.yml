@@ -109,7 +109,7 @@ patterns:
     target: 'https://github.com/cmbuckley$1'
   - pattern: '~/\.?([^/]+)'
     target: 'https://github.com/cmbuckley/dotfiles/blob/master/files/$1'
-  - pattern: '(paypal|monzo)(/.*)?'
+  - pattern: '(paypal|monzo|revolut)(/.*)?'
     target: 'https://$1.me/cmbuckley$2'
   - pattern: 'pay(/.*)?'
     target:
