@@ -44,21 +44,27 @@ static:
   map:
     plugin: map
     params:
-      - '6 Brunel Court, YO26 4UU'
-      - Bux’s House
-      - [53.963286, -1.104168, 35, 4]
+      title: Bux’s House
+      address: '6 Brunel Court, YO26 4UU'
+      img: [53.963286, -1.104168, 35, 4]
   map/meanwood:
     plugin: map
     params:
-      - '3 Sandfield Garth, LS6 4JL'
-      - Meanwood
-      - [53.8273013, -1.5725007, 190, 50]
+      title: Meanwood
+      address: '3 Sandfield Garth, LS6 4JL'
+      img: [53.8273013, -1.5725007, 190, 50]
   map/gv:
     plugin: map
     params:
-      - '19a Green View, Meanwood, LS6 4JY'
-      - 'Green View'
-      - [53.829753,-1.5695829, 175, 45]
+      title: Green View
+      address: '19a Green View, Meanwood, LS6 4JY'
+      img: [53.829753,-1.5695829, 175, 45]
+  map/ad:
+    plugin: map
+    params:
+      title: Answer Digital
+      address: 'Answer Digital, 9 Union Mills, LS11 5DD'
+      img: [53.7884123,-1.5456555, 75, 10]
   me: https://cmbuckley.co.uk
   nz: https://www.facebook.com/media/set/?set=a.10100293779056823.2539736.61201039&type=1&l=251a132c36
   nz/ppl: https://www.facebook.com/media/set/?set=a.10100293796646573.2539740.61201039&type=1&l=8aa7bd9459
