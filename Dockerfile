@@ -9,4 +9,7 @@ RUN install-php-extensions yaml
 ARG IMG_HOST
 ENV IMG_HOST $IMG_HOST
 
+COPY apache/imghost.conf /etc/apache2/sites-enabled/
+COPY apache/custom.conf /etc/apache2/conf-enabled/xxx-custom.conf
+
 COPY src /var/www
