@@ -209,7 +209,7 @@ if (isset($links['static'][$path])) {
         $ua = $_SERVER['HTTP_USER_AGENT'];
 
         if (false !== strpos($type, 'video/') && strpos($ua, 'Safari/') && !strpos($ua, 'Chrome/')) {
-            header('Location: https://i.' . $_ENV['IMG_HOST'] . '/c/' . basename($file));
+            header('Location: https://' . $_ENV['IMG_HOST'] . '/c/' . basename($file));
             return;
         }
 
