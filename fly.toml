@@ -1,5 +1,8 @@
 app = "smurl"
 
+[build.args]
+  IMG_HOST = "i.bux.re"
+
 [env]
   APP_ENV = "production"
 
