@@ -5,8 +5,12 @@ class Template extends ArrayObject {
 
     public function __construct($name, array $input = array()) {
         $this->templateName = $name;
-        $input['imgUrl'] = 'https://i.' . $_SERVER['HTTP_HOST'];
+        $input['imgUrl'] = 'https://' . $_ENV['IMG_HOST'];
         parent::__construct($input, self::ARRAY_AS_PROPS);
+    }
+
+    public function offsetGet(mixed $key): mixed {
+        return $this->offsetExists($key) ? parent::offsetGet($key) : null;
     }
 
     public function __toString() {
@@ -16,12 +20,6 @@ class Template extends ArrayObject {
     }
 }
 
-function env($key, $default = null) {
-    static $env;
-    if (!$env) { $env = require_once '../config/env.php'; }
-    return (isset($env[$key]) ? $env[$key] : $default);
-}
-
 function getRequestUrl() {
     return sprintf(
         'http%s://%s%s',
@@ -29,6 +27,13 @@ function getRequestUrl() {
         $_SERVER['HTTP_HOST'],
         $_SERVER['REQUEST_URI']
     );
+}
+
+function error($code) {
+    http_response_code($code);
+    if (file_exists($file = "../views/$code.php")) {
+        include_once $file;
+    }
 }
 
 function pay($name) {
@@ -92,7 +97,7 @@ function map($address, $title, array $img) {
                 'queryString'       => $queryString,
                 'queryStringSimple' => $queryStringSimple,
                 'address'           => $address,
-                'key'               => env('google-api-key'),
+                'key'               => $_ENV['GOOGLE_API_KEY'],
             ));
 
             // @todo sort out maps links for Android
@@ -122,18 +127,19 @@ function runPlugin(array $config) {
     try {
         return call_user_func_array($config['plugin'], $params);
     } catch (TypeError $e) {
-        error_log("Invalid smurl plugin [${config['plugin']}]");
-        http_response_code(501);
+        error_log("Invalid smurl plugin [{$config['plugin']}]");
+        error(501);
     }
 }
 
 $linksFile = '../config/links.yml';
 $links = yaml_parse(file_get_contents($linksFile));
 
-$allPatterns = '#' . implode('|', array_column($links['patterns'], 'pattern')) . '#';
+$allPatterns = '#^(' . implode('|', array_column($links['patterns'], 'pattern')) . ')$#';
 
 $host = $_SERVER['HTTP_HOST'];
-$path = ltrim($_SERVER['PATH_INFO'], '/');
+$parts = parse_url($_SERVER['REQUEST_URI']);
+$path = ltrim($parts['path'], '/');
 
 if (isset($links['static'][$path])) {
     $location = $links['static'][$path];
@@ -163,7 +169,7 @@ if (isset($links['static'][$path])) {
         $pattern = $link['pattern'];
         $target = $link['target'];
 
-        if (is_array($target) && preg_match("#$pattern#", $path)) {
+        if (is_array($target) && preg_match("#^{$pattern}$#", $path)) {
             if (isset($target['plugin'])) {
                 $target = runPlugin($target);
             }
@@ -187,7 +193,7 @@ if (isset($links['static'][$path])) {
         }
     }
 
-    http_response_code(404);
+    error(404);
 } else {
     if ($glob = glob("../img/c/$path*")) {
         $file = $glob[0];
@@ -197,13 +203,13 @@ if (isset($links['static'][$path])) {
         $ua = $_SERVER['HTTP_USER_AGENT'];
 
         if (false !== strpos($type, 'video/') && strpos($ua, 'Safari/') && !strpos($ua, 'Chrome/')) {
-            header('Location: https://i.' . $_SERVER['HTTP_HOST'] . '/c/' . basename($file));
+            header('Location: https://i.' . $_ENV['IMG_HOST'] . '/c/' . basename($file));
             return;
         }
 
         header('Content-Type: ' . $type);
         readfile($file);
     } else {
-        http_response_code(404);
+        error(404);
     }
 }
