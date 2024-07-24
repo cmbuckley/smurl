@@ -20,10 +20,16 @@ class Template extends ArrayObject {
     }
 }
 
+function isHttps() {
+    return (isset($_SERVER['HTTP_X_FORWARDED_SSL'])
+        ? $_SERVER['HTTP_X_FORWARDED_SSL'] == 'on'
+        : (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on'));
+}
+
 function getRequestUrl() {
     return sprintf(
         'http%s://%s%s',
-        ($_SERVER['HTTPS'] == 'on' ? 's' : ''),
+        (isHttps() ? 's' : ''),
         $_SERVER['HTTP_HOST'],
         $_SERVER['REQUEST_URI']
     );
@@ -160,7 +166,7 @@ if (isset($links['static'][$path])) {
         }
     } else {
         if ($location[0] == '/') {
-            $location = 'http' . ($_SERVER['HTTPS'] == 'on' ? 's' : '') . ':' . $location;
+            $location = 'http' . (isHttps() ? 's' : '') . ':' . $location;
         }
         header('Location: ' . $location);
     }
