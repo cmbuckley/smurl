@@ -78,6 +78,7 @@ static:
   rc: https://commons.wikimedia.org/wiki/File:Rubik%27s_cube_scrambled.svg
   rqjs: //cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.js
   rubik: https://cmbuckley.co.uk/blog/2015/05/27/my-rubiks-cube-solution/
+  sbg.technology: https://sbg-technology.starsquare.co.uk
   sbg-dond:
     plugin: qsa
     params: https://www.skyvegas.com/game/dond-whats-in-your-box-html
