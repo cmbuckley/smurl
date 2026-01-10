@@ -55,7 +55,7 @@
         }
 
         .paypal {
-            background-image: url('https://www.paypalobjects.com/webstatic/mktg/Logo/pp-logo-200px.png');
+            background-image: url('<?= $this->imgUrl; ?>/paypal.svg');
         }
 
         .monzo {
