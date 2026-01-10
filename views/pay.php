@@ -65,6 +65,24 @@
         .revolut {
             background-image: url('<?= $this->imgUrl; ?>/revolut.svg');
         }
+
+        @media (prefers-color-scheme: dark) {
+            body {
+                background-color: #121212;
+                color: #b2a36c;
+            }
+
+            li {
+                background-color: #b4b0aa;
+                border-color: #b5b5b5;
+                box-shadow: 0px 0px 15px 0px rgba(255, 255, 255, 0.7);
+            }
+
+            li:hover {
+                background-color: #d0d3d7;
+                box-shadow: 0px 0px 15px 0px rgba(255, 255, 255, 0.9);
+            }
+        }
     </style>
 </head>
 <body>
