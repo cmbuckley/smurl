@@ -129,3 +129,5 @@ patterns:
   - pattern: 'grav(/.*)'
     target:
       plugin: gravatar
+  - pattern: 'emerg(ency)?'
+    target: 'https://gist.github.com/cmbuckley/d74c3d060ccb47948c911adb53334986'
